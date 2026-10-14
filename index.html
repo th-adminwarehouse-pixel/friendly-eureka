@@ -84,9 +84,8 @@
             </form>
         </section>
 
-        <!-- RESULT CONTAINER -->
+        <!-- RESULT CONTAINER (CUSTOMER DATA) -->
         <div id="result-container" class="space-y-6 hidden">
-
             <!-- CUSTOMER & MOTORCYCLE CARD -->
             <section class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white rounded-3xl p-6 shadow-xl space-y-4 border border-slate-800">
                 <div class="flex justify-between items-start border-b border-slate-700/60 pb-3">
@@ -123,18 +122,44 @@
                     </div>
                 </div>
             </section>
+        </div>
 
-            <!-- BANK ACCOUNT PAYMENT SECTION WITH HIGH-RES KBANK LOGO -->
-            <section id="payment-section" class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200/80 space-y-4">
-                <div class="text-center space-y-1">
-                    <h3 class="text-base font-bold text-slate-900 flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-building-columns text-emerald-600"></i>
-                        <span data-i18n="pay_title">ชำระค่างวดผ่านการโอนเงินธนาคาร</span>
-                    </h3>
-                    <p class="text-xs text-slate-500" data-i18n="pay_sub">โอนเงินเข้าบัญชีธนาคารของร้านได้ทุกแอปธนาคาร</p>
+        <!-- NOT FOUND ALERT -->
+        <div id="not-found-card" class="bg-white rounded-3xl p-8 text-center shadow-sm border border-slate-200/80 space-y-3 hidden">
+            <div class="w-14 h-14 bg-red-50 text-red-500 rounded-full flex items-center justify-center mx-auto text-2xl">
+                <i class="fa-solid fa-circle-xmark"></i>
+            </div>
+            <h3 class="font-bold text-slate-800" data-i18n="not_found_title">ไม่พบข้อมูลการผ่อนชำระ</h3>
+            <p class="text-xs text-slate-500 max-w-xs mx-auto" data-i18n="not_found_desc">กรุณาตรวจสอบ เบอร์โทรศัพท์, เลขบัตรประชาชน หรือเลขทะเบียนรถอีกครั้ง หรือติดต่อเจ้าหน้าที่ทางโทรศัพท์</p>
+        </div>
+
+        <!-- ALWAYS VISIBLE KBANK PAYMENT SECTION -->
+        <section id="payment-section" class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200/80 space-y-4">
+            <div class="text-center space-y-1">
+                <h3 class="text-base font-bold text-slate-900 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-building-columns text-emerald-600"></i>
+                    <span data-i18n="pay_title">ชำระค่างวดผ่านการโอนเงินธนาคาร</span>
+                </h3>
+                <p class="text-xs text-slate-500" data-i18n="pay_sub">โอนเงินเข้าบัญชีธนาคารของร้านได้ทุกแอปธนาคาร</p>
+            </div>
+
+            <!-- BANK CARD WITH GUARANTEED WIKIMEDIA KBANK SVG LOGO -->
+            <div class="bg-gradient-to-br from-emerald-900 via-slate-900 to-navy-900 text-white p-6 rounded-3xl shadow-xl space-y-4 border border-emerald-500/30 relative overflow-hidden">
+                
+                <!-- HEADER: LOGO & BANK NAME -->
+                <div class="flex items-center justify-between border-b border-slate-700/80 pb-3">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white p-1 shadow-md flex items-center justify-center shrink-0 border-2 border-emerald-400 overflow-hidden">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Kasikornbank_Logo.svg" alt="โลโก้ธนาคารกสิกรไทย" class="w-full h-full object-contain">
+                        </div>
+                        <div>
+                            <h4 class="font-extrabold text-lg text-white tracking-wide" data-i18n="bank_name">ธนาคารกสิกรไทย</h4>
+                            <p class="text-xs text-emerald-300 font-medium tracking-wider">KASIKORNBANK (KBANK)</p>
+                        </div>
+                    </div>
+                    <span class="text-[10px] bg-emerald-500/20 text-emerald-300 font-semibold px-2.5 py-1 rounded-full border border-emerald-400/30 shadow-inner shrink-0" data-i18n="account_type">บัญชีรับชำระ</span>
                 </div>
-
-                <!-- BANK CARD WITH HIGH-RES KBANK LOGO IMAGE -->
-                <div class="bg-gradient-to-br from-emerald-900 via-slate-900 to-navy-900 text-white p-6 rounded-3xl shadow-xl space-y-4 border border-emerald-500/30 relative overflow-hidden">
-                    
-                    <!-- HEADER: LOGO & BANK
+                
+                <!-- ACCOUNT NUMBER BOX -->
+                <div class="bg-slate-800/80 p-4 rounded-2xl border border-slate-700/60 space-y-1">
+                    <p class
