@@ -4,22 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Payment Portal - KATE SALES AUTO GROUP</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font - Prompt & Noto Sans Myanmar -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@400;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Prompt', 'Noto Sans Myanmar', 'sans-serif'] },
-                    colors: { navy: { 800: '#111827', 900: '#0b0f19' }, amber: { 400: '#fbbf24', 500: '#f59e0b' } }
+                    fontFamily: {
+                        sans: ['Prompt', 'Noto Sans Myanmar', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            800: '#111827',
+                            900: '#0b0f19',
+                        },
+                        amber: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                        }
+                    }
                 }
             }
         }
     </script>
-    <style>body { font-family: 'Prompt', 'Noto Sans Myanmar', sans-serif; }</style>
+    <style>
+        body { font-family: 'Prompt', 'Noto Sans Myanmar', sans-serif; }
+    </style>
 </head>
 <body class="min-h-full flex flex-col bg-slate-100 text-slate-800 antialiased">
 
@@ -36,6 +53,7 @@
                 </div>
             </div>
 
+            <!-- LANGUAGE SWITCHER BUTTONS -->
             <div class="flex items-center bg-slate-800 p-1 rounded-xl border border-slate-700 text-[11px] font-semibold">
                 <button onclick="changeLanguage('th')" id="lang-th" class="px-2 py-1 rounded-lg text-amber-400 bg-slate-700 transition">🇹🇭 TH</button>
                 <button onclick="changeLanguage('mm')" id="lang-mm" class="px-2 py-1 rounded-lg text-slate-400 hover:text-white transition">🇲🇲 မြန်မာ</button>
@@ -44,6 +62,7 @@
         </div>
     </header>
 
+    <!-- MAIN CONTENT CONTAINER -->
     <main class="flex-1 max-w-md mx-auto sm:max-w-2xl w-full px-4 py-6 space-y-6">
 
         <!-- SEARCH SECTION -->
@@ -56,239 +75,4 @@
             <form onsubmit="handleSearch(event)" class="space-y-3">
                 <div class="relative">
                     <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                    <input type="text" id="search-query" required placeholder="เบอร์โทร / เลขบัตรประชาชน / ทะเบียน..." class="w-full pl-11 pr-4 py-3 bg-slate-50 rounded-2xl border border-slate-300 focus:ring-2 focus:ring-amber-500 text-sm outline-none transition">
-                </div>
-                <button type="submit" class="w-full bg-navy-900 hover:bg-navy-800 text-white font-bold py-3 px-6 rounded-2xl shadow-lg transition flex items-center justify-center gap-2 text-sm">
-                    <i class="fa-solid fa-search text-amber-400"></i>
-                    <span data-i18n="btn_search">ค้นหาข้อมูลค่างวด</span>
-                </button>
-            </form>
-        </section>
-
-        <!-- RESULT CONTAINER -->
-        <div id="result-container" class="space-y-6 hidden">
-            <section class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white rounded-3xl p-6 shadow-xl space-y-4 border border-slate-800">
-                <div class="flex justify-between items-start border-b border-slate-700/60 pb-3">
-                    <div>
-                        <span class="text-[10px] uppercase text-amber-400 font-semibold bg-amber-400/10 px-2.5 py-0.5 rounded-full border border-amber-400/20" data-i18n="contract_info">ข้อมูลสัญญาผ่อน</span>
-                        <h3 class="text-lg font-bold text-white mt-1" id="res-cust-name">-</h3>
-                    </div>
-                    <div id="res-status-badge"></div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-3 text-xs">
-                    <div class="bg-slate-800/60 p-3 rounded-2xl border border-slate-700/50">
-                        <p class="text-slate-400 text-[11px]" data-i18n="lbl_bike_model">ยี่ห้อ/รุ่นรถ</p>
-                        <p class="font-bold text-amber-300 mt-0.5" id="res-bike-model">-</p>
-                    </div>
-                    <div class="bg-slate-800/60 p-3 rounded-2xl border border-slate-700/50">
-                        <p class="text-slate-400 text-[11px]" data-i18n="lbl_bike_plate">ทะเบียน / ป้ายแดง</p>
-                        <p class="font-bold text-white mt-0.5" id="res-bike-license">-</p>
-                    </div>
-                </div>
-
-                <div class="bg-slate-800/80 p-4 rounded-2xl border border-slate-700/80 space-y-2">
-                    <div class="flex justify-between text-xs text-slate-300">
-                        <span data-i18n="lbl_total_price">ราคารถรวมทั้งสิ้น:</span>
-                        <span class="font-semibold text-white" id="res-total-price">฿0</span>
-                    </div>
-                    <div class="flex justify-between text-xs text-emerald-400">
-                        <span data-i18n="lbl_paid_price">ชำระสะสมแล้ว:</span>
-                        <span class="font-semibold" id="res-paid-price">฿0</span>
-                    </div>
-                    <div class="flex justify-between text-sm pt-2 border-t border-slate-700 font-bold">
-                        <span class="text-amber-400" data-i18n="lbl_balance">ยอดคงเหลือค้างชำระ:</span>
-                        <span class="text-amber-400 text-base" id="res-balance-price">฿0</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- QR PAYMENT -->
-            <section id="payment-section" class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200/80 space-y-4">
-                <div class="text-center space-y-1">
-                    <h3 class="text-base font-bold text-slate-900 flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-qrcode text-emerald-600"></i>
-                        <span data-i18n="pay_title">ชำระค่างวดผ่าน PromptPay QR Code</span>
-                    </h3>
-                    <p class="text-xs text-slate-500" data-i18n="pay_sub">สแกนจ่ายด้วยแอปธนาคารได้ทุกธนาคาร ฟรีไม่มีค่าธรรมเนียม</p>
-                </div>
-
-                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
-                    <label class="block text-xs font-semibold text-slate-700 text-center" data-i18n="lbl_enter_amount">ระบุจำนวนเงินที่ต้องการชำระครั้งนี้ (บาท)</label>
-                    <div class="relative">
-                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold">฿</span>
-                        <input type="number" id="custom-pay-amount" min="1" oninput="generateQrCode()" class="w-full pl-8 pr-4 py-2.5 text-center text-xl font-bold text-emerald-600 bg-white rounded-xl border border-slate-300 outline-none">
-                    </div>
-                </div>
-
-                <div class="text-center p-5 bg-slate-50 rounded-2xl border border-emerald-200 space-y-3">
-                    <div class="inline-block p-3 bg-white rounded-2xl shadow-md border">
-                        <img id="qr-code-img" src="" alt="PromptPay QR Code" class="w-48 h-48 mx-auto object-contain">
-                    </div>
-                    <p class="text-xs font-bold text-slate-800"><span data-i18n="qr_pay_for">สแกนเพื่อจ่ายยอด</span> <span id="qr-amount-text" class="text-emerald-600">฿0</span></p>
-                </div>
-            </section>
-        </div>
-
-        <div id="not-found-card" class="bg-white rounded-3xl p-8 text-center shadow-sm border border-slate-200/80 space-y-3 hidden">
-            <h3 class="font-bold text-slate-800" data-i18n="not_found_title">ไม่พบข้อมูลการผ่อนชำระ</h3>
-            <p class="text-xs text-slate-500" data-i18n="not_found_desc">กรุณาตรวจสอบข้อมูลและลองใหม่อีกครั้ง</p>
-        </div>
-    </main>
-
-    <script>
-        // ⚠️ เปลี่ยนเบอร์โทรพร้อมเพย์ของร้านตรงนี้ครับ
-        const PROMPTPAY_ACCOUNT = '0812345678'; 
-        const STORAGE_KEY = 'KATE_SALES_RECORDS_V2';
-        let currentLang = 'th';
-
-        const i18n = {
-            th: {
-                subtitle: 'บริการตรวจสอบค่างวดและชำระเงินออนไลน์',
-                search_title: '🔍 ตรวจสอบยอดค้างชำระค่างวด',
-                search_sub: 'กรอกเบอร์โทรศัพท์, เลขบัตรประชาชน หรือเลขทะเบียนรถเพื่อค้นหา',
-                input_placeholder: 'เบอร์โทร / เลขบัตรประชาชน / ทะเบียน...',
-                btn_search: 'ค้นหาข้อมูลค่างวด',
-                contract_info: 'ข้อมูลสัญญาผ่อน',
-                lbl_bike_model: 'ยี่ห้อ/รุ่นรถ',
-                lbl_bike_plate: 'ทะเบียน / ป้ายแดง',
-                lbl_total_price: 'ราคารถรวมทั้งสิ้น:',
-                lbl_paid_price: 'ชำระสะสมแล้ว:',
-                lbl_balance: 'ยอดคงเหลือค้างชำระ:',
-                status_paying: 'กำลังผ่อนชำระ',
-                status_paid: 'ชำระครบแล้ว',
-                pay_title: 'ชำระค่างวดผ่าน PromptPay QR Code',
-                pay_sub: 'สแกนจ่ายด้วยแอปธนาคารได้ทุกธนาคาร ฟรีไม่มีค่าธรรมเนียม',
-                lbl_enter_amount: 'ระบุจำนวนเงินที่ต้องการชำระครั้งนี้ (บาท)',
-                qr_pay_for: 'สแกนเพื่อจ่ายยอด',
-                not_found_title: 'ไม่พบข้อมูลการผ่อนชำระ',
-                not_found_desc: 'กรุณาตรวจสอบ เบอร์โทรศัพท์, เลขบัตรประชาชน หรือเลขทะเบียนรถอีกครั้ง'
-            },
-            mm: {
-                subtitle: 'အရစ်ကျငွေပေးချေမှုစစ်ဆေးရန်နှင့် အွန်လိုင်းငွေပေးချေမှုစနစ်',
-                search_title: '🔍 ကျန်ရှိသော အရစ်ကျငွေပမာဏကို စစ်ဆေးပါ',
-                search_sub: 'ဖုန်းနံပါတ်၊ မှတ်ပုံတင်နံပါတ် သို့မဟုတ် ယာဉ်နံပါတ် ရိုက်ထည့်၍ ရှာဖွေပါ',
-                input_placeholder: 'ဖုန်းနံပါတ် / မှတ်ပုံတင် / ယာဉ်နံပါတ်...',
-                btn_search: 'အချက်အလက်များ ရှာဖွေပါ',
-                contract_info: 'အရစ်ကျစာချုပ် အချက်အလက်များ',
-                lbl_bike_model: 'ဆိုင်ကယ်အမျိုးအစား/မော်ဒယ်',
-                lbl_bike_plate: 'ယာဉ်နံပါတ်',
-                lbl_total_price: 'စုစုပေါင်း ဆိုင်ကယ်ဈေးနှုန်း:',
-                lbl_paid_price: 'ပေးချေပြီးသော စုစုပေါင်းငွေ:',
-                lbl_balance: 'ပေးရန်ကျန်ရှိသော ငွေပမာဏ:',
-                status_paying: 'အရစ်ကျပေးချေနေဆဲ',
-                status_paid: 'ငွေပေးချေမှု ပြီးစီးပါပြီ',
-                pay_title: 'PromptPay QR Code ဖြင့် ငွေပေးချေပါ',
-                pay_sub: 'မည်သည့်ဘဏ်အက်ပ်ဖြင့်မဆို စကင်ဖတ်၍ အခမဲ့ပေးချေနိုင်သည်',
-                lbl_enter_amount: 'ယခုပေးချေလိုသော ငွေပမာဏကို ရိုက်ထည့်ပါ (ဘတ်)',
-                qr_pay_for: 'ပေးချေရန် စကင်ဖတ်ပါ',
-                not_found_title: 'အချက်အလက် မတွေ့ရှိပါ',
-                not_found_desc: 'ဖုန်းနံပါတ် သို့မဟုတ် ယာဉ်နံပါတ်ကို ပြန်လည်စစ်ဆေးပါ'
-            },
-            en: {
-                subtitle: 'Installment balance lookup & online payment portal',
-                search_title: '🔍 Check Installment Balance',
-                search_sub: 'Enter Phone Number, ID Card No., or License Plate to search',
-                input_placeholder: 'Phone No. / ID Card / Plate No...',
-                btn_search: 'Search Installment Info',
-                contract_info: 'Contract Info',
-                lbl_bike_model: 'Motorcycle Model',
-                lbl_bike_plate: 'License Plate No.',
-                lbl_total_price: 'Total Vehicle Price:',
-                lbl_paid_price: 'Total Amount Paid:',
-                lbl_balance: 'Remaining Balance:',
-                status_paying: 'Active Installment',
-                status_paid: 'Fully Paid',
-                pay_title: 'Pay via PromptPay QR Code',
-                pay_sub: 'Scan and pay using any Mobile Banking App (No fee)',
-                lbl_enter_amount: 'Enter Payment Amount for this time (THB)',
-                qr_pay_for: 'Scan to pay amount',
-                not_found_title: 'No Contract Data Found',
-                not_found_desc: 'Please double-check your Phone Number, ID Card No., or License Plate.'
-            }
-        };
-
-        const DEMO_DATABASE = [
-            { id: 'K-1001', custName: 'SANDA (สมชาย ใจดี)', custPhone: '0812345678', custIdCard: '1234567890123', bikeModel: 'GPX DONE 150 สีขาว', bikeLicense: '3286', payTotal: 23000, payPaid: 15000, payBalance: 8000 }
-        ];
-
-        let currentActiveRecord = null;
-
-        window.addEventListener('DOMContentLoaded', () => {
-            // ดึงค่าการค้นหาอัตโนมัติจาก URL ถ้ามีลิงก์ส่งมา
-            const urlParams = new URLSearchParams(window.location.search);
-            const searchParam = urlParams.get('search');
-            if (searchParam) {
-                document.getElementById('search-query').value = searchParam;
-                handleSearch();
-            }
-        });
-
-        function changeLanguage(lang) {
-            currentLang = lang;
-            ['th', 'mm', 'en'].forEach(l => {
-                document.getElementById(`lang-${l}`).className = l === lang 
-                    ? "px-2 py-1 rounded-lg text-amber-400 bg-slate-700 transition" 
-                    : "px-2 py-1 rounded-lg text-slate-400 hover:text-white transition";
-            });
-            document.getElementById('search-query').placeholder = i18n[lang].input_placeholder;
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (i18n[lang][key]) el.innerText = i18n[lang][key];
-            });
-        }
-
-        function handleSearch(e) {
-            if (e) e.preventDefault();
-            const query = document.getElementById('search-query').value.trim().toLowerCase();
-            if (!query) return;
-
-            let records = DEMO_DATABASE;
-            const saved = localStorage.getItem(STORAGE_KEY);
-            if (saved) {
-                try {
-                    const parsed = JSON.parse(saved);
-                    if (parsed && parsed.length > 0) records = parsed;
-                } catch(err) {}
-            }
-
-            const found = records.find(item => 
-                (item.custPhone && item.custPhone.replaceAll('-','').includes(query)) ||
-                (item.custIdCard && item.custIdCard.includes(query)) ||
-                (item.bikeLicense && item.bikeLicense.toLowerCase().includes(query)) ||
-                (item.custName && item.custName.toLowerCase().includes(query))
-            );
-
-            if (found) {
-                currentActiveRecord = found;
-                displayCustomerData(found);
-                document.getElementById('result-container').classList.remove('hidden');
-                document.getElementById('not-found-card').classList.add('hidden');
-            } else {
-                document.getElementById('result-container').classList.add('hidden');
-                document.getElementById('not-found-card').classList.remove('hidden');
-            }
-        }
-
-        function displayCustomerData(data) {
-            document.getElementById('res-cust-name').innerText = data.custName;
-            document.getElementById('res-bike-model').innerText = data.bikeModel;
-            document.getElementById('res-bike-license').innerText = data.bikeLicense;
-            document.getElementById('res-total-price').innerText = '฿' + data.payTotal.toLocaleString();
-            document.getElementById('res-paid-price').innerText = '฿' + data.payPaid.toLocaleString();
-            document.getElementById('res-balance-price').innerText = '฿' + data.payBalance.toLocaleString();
-
-            const payInput = document.getElementById('custom-pay-amount');
-            payInput.value = data.payBalance > 0 ? data.payBalance : 0;
-            generateQrCode();
-        }
-
-        function generateQrCode() {
-            const amountInput = parseFloat(document.getElementById('custom-pay-amount').value) || 0;
-            document.getElementById('qr-amount-text').innerText = '฿' + amountInput.toLocaleString();
-            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=PromptPay-${PROMPTPAY_ACCOUNT}-Amount-${amountInput}`;
-            document.getElementById('qr-code-img').src = qrUrl;
-        }
-    </script>
-</body>
-</html>
+                    <input type="text" id="search
