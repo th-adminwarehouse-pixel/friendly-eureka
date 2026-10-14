@@ -75,4 +75,76 @@
             <form onsubmit="handleSearch(event)" class="space-y-3">
                 <div class="relative">
                     <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                    <input type="
+                    <input type="text" id="search-query" required placeholder="เบอร์โทร / เลขบัตรประชาชน / ทะเบียน..." class="w-full pl-11 pr-4 py-3 bg-slate-50 rounded-2xl border border-slate-300 focus:ring-2 focus:ring-amber-500 text-sm outline-none transition">
+                </div>
+                <button type="submit" class="w-full bg-navy-900 hover:bg-navy-800 active:scale-[0.99] text-white font-bold py-3 px-6 rounded-2xl shadow-lg transition duration-200 flex items-center justify-center gap-2 text-sm">
+                    <i class="fa-solid fa-search text-amber-400"></i>
+                    <span data-i18n="btn_search">ค้นหาข้อมูลค่างวด</span>
+                </button>
+            </form>
+        </section>
+
+        <!-- RESULT CONTAINER -->
+        <div id="result-container" class="space-y-6 hidden">
+
+            <!-- CUSTOMER & MOTORCYCLE CARD -->
+            <section class="bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 text-white rounded-3xl p-6 shadow-xl space-y-4 border border-slate-800">
+                <div class="flex justify-between items-start border-b border-slate-700/60 pb-3">
+                    <div>
+                        <span class="text-[10px] uppercase tracking-wider text-amber-400 font-semibold bg-amber-400/10 px-2.5 py-0.5 rounded-full border border-amber-400/20" data-i18n="contract_info">ข้อมูลสัญญาผ่อน</span>
+                        <h3 class="text-lg font-bold text-white mt-1" id="res-cust-name">-</h3>
+                    </div>
+                    <div id="res-status-badge"></div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 text-xs">
+                    <div class="bg-slate-800/60 p-3 rounded-2xl border border-slate-700/50">
+                        <p class="text-slate-400 text-[11px]" data-i18n="lbl_bike_model">ยี่ห้อ/รุ่นรถ</p>
+                        <p class="font-bold text-amber-300 mt-0.5" id="res-bike-model">-</p>
+                    </div>
+                    <div class="bg-slate-800/60 p-3 rounded-2xl border border-slate-700/50">
+                        <p class="text-slate-400 text-[11px]" data-i18n="lbl_bike_plate">ทะเบียน / ป้ายแดง</p>
+                        <p class="font-bold text-white mt-0.5" id="res-bike-license">-</p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/80 p-4 rounded-2xl border border-slate-700/80 space-y-2">
+                    <div class="flex justify-between text-xs text-slate-300">
+                        <span data-i18n="lbl_total_price">ราคารถรวมทั้งสิ้น:</span>
+                        <span class="font-semibold text-white" id="res-total-price">฿0</span>
+                    </div>
+                    <div class="flex justify-between text-xs text-emerald-400">
+                        <span data-i18n="lbl_paid_price">ชำระสะสมแล้ว:</span>
+                        <span class="font-semibold" id="res-paid-price">฿0</span>
+                    </div>
+                    <div class="flex justify-between text-sm pt-2 border-t border-slate-700 font-bold">
+                        <span class="text-amber-400" data-i18n="lbl_balance">ยอดคงเหลือค้างชำระ:</span>
+                        <span class="text-amber-400 text-base" id="res-balance-price">฿0</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BANK ACCOUNT PAYMENT SECTION WITH HIGH-PRECISION KBANK LOGO -->
+            <section id="payment-section" class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200/80 space-y-4">
+                <div class="text-center space-y-1">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-building-columns text-emerald-600"></i>
+                        <span data-i18n="pay_title">ชำระค่างวดผ่านการโอนเงินธนาคาร</span>
+                    </h3>
+                    <p class="text-xs text-slate-500" data-i18n="pay_sub">โอนเงินเข้าบัญชีธนาคารของร้านได้ทุกแอปธนาคาร</p>
+                </div>
+
+                <!-- BANK CARD WITH GUARANTEED VECTOR LOGO -->
+                <div class="bg-gradient-to-br from-emerald-900 via-slate-900 to-navy-900 text-white p-6 rounded-3xl shadow-xl space-y-4 border border-emerald-500/30 relative overflow-hidden">
+                    
+                    <!-- HEADER: LOGO & BANK NAME -->
+                    <div class="flex items-center justify-between border-b border-slate-700/80 pb-3">
+                        <div class="flex items-center space-x-3">
+                            <!-- โลโก้ธนาคารกสิกรไทย แบบ VECTOR SVG ขึ้นภาพแน่นอน 100% -->
+                            <div class="w-14 h-14 rounded-full bg-white p-0.5 shadow-md flex items-center justify-center shrink-0 border-2 border-emerald-400">
+                                <svg class="w-full h-full" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- กรอบวงกลมแดง -->
+                                    <circle cx="50" cy="50" r="48" fill="#E61B23"/>
+                                    <!-- พื้นหลังขาวด้านใน -->
+                                    <circle cx="50" cy="50" r="38" fill="#FFFFFF"/>
+                                    <!-- ใบ
