@@ -143,23 +143,28 @@
                 <p class="text-xs text-slate-500" data-i18n="pay_sub">โอนเงินเข้าบัญชีธนาคารของร้านได้ทุกแอปธนาคาร</p>
             </div>
 
-            <!-- BANK CARD WITH GUARANTEED WIKIMEDIA KBANK SVG LOGO -->
+            <!-- BANK CARD WITH EMBEDDED INLINE KBANK SVG LOGO -->
             <div class="bg-gradient-to-br from-emerald-900 via-slate-900 to-navy-900 text-white p-6 rounded-3xl shadow-xl space-y-4 border border-emerald-500/30 relative overflow-hidden">
                 
                 <!-- HEADER: LOGO & BANK NAME -->
                 <div class="flex items-center justify-between border-b border-slate-700/80 pb-3">
                     <div class="flex items-center space-x-3">
+                        <!-- INLINE KBANK EMBEDDED SVG (NO EXTERNAL IMAGE DEPENDENCY) -->
                         <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white p-1 shadow-md flex items-center justify-center shrink-0 border-2 border-emerald-400 overflow-hidden">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Kasikornbank_Logo.svg" alt="โลโก้ธนาคารกสิกรไทย" class="w-full h-full object-contain">
+                            <svg viewBox="0 0 100 100" class="w-full h-full">
+                                <circle cx="50" cy="50" r="48" fill="#138f2d"/>
+                                <circle cx="50" cy="50" r="43" fill="#ffffff"/>
+                                <circle cx="50" cy="50" r="39" fill="#138f2d"/>
+                                <!-- Kasikornbank Rice Stalk / Flower Icon -->
+                                <g fill="#e31b23">
+                                    <path d="M50 15 L56 35 L50 28 L44 35 Z"/>
+                                    <path d="M50 28 L62 48 L50 39 L38 48 Z"/>
+                                    <path d="M50 39 L68 62 L50 51 L32 62 Z"/>
+                                    <path d="M50 51 L74 76 L50 63 L26 76 Z"/>
+                                    <rect x="47" y="63" width="6" height="23" fill="#e31b23"/>
+                                </g>
+                            </svg>
                         </div>
                         <div>
                             <h4 class="font-extrabold text-lg text-white tracking-wide" data-i18n="bank_name">ธนาคารกสิกรไทย</h4>
-                            <p class="text-xs text-emerald-300 font-medium tracking-wider">KASIKORNBANK (KBANK)</p>
-                        </div>
-                    </div>
-                    <span class="text-[10px] bg-emerald-500/20 text-emerald-300 font-semibold px-2.5 py-1 rounded-full border border-emerald-400/30 shadow-inner shrink-0" data-i18n="account_type">บัญชีรับชำระ</span>
-                </div>
-                
-                <!-- ACCOUNT NUMBER BOX -->
-                <div class="bg-slate-800/80 p-4 rounded-2xl border border-slate-700/60 space-y-1">
-                    <p class
+                            <p class="text-xs text-emerald-3
