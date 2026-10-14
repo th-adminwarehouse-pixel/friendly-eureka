@@ -42,38 +42,4 @@
 <body class="min-h-full flex flex-col bg-slate-100 text-slate-800 antialiased">
 
     <!-- HEADER NAVIGATION BAR -->
-    <header class="bg-navy-900 text-white shadow-lg sticky top-0 z-30 border-b border-slate-800">
-        <div class="max-w-md mx-auto sm:max-w-2xl px-4 py-3 flex items-center justify-between">
-            <div class="flex items-center space-x-2.5">
-                <div class="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-lg border border-amber-500/30">
-                    <i class="fa-solid fa-motorcycle"></i>
-                </div>
-                <div>
-                    <h1 class="font-extrabold text-sm sm:text-base tracking-wide text-amber-400">KATE SALES AUTO GROUP</h1>
-                    <p class="text-[10px] text-slate-400 font-light" data-i18n="subtitle">บริการตรวจสอบค่างวดและชำระเงินออนไลน์</p>
-                </div>
-            </div>
-
-            <!-- LANGUAGE SWITCHER BUTTONS -->
-            <div class="flex items-center bg-slate-800 p-1 rounded-xl border border-slate-700 text-[11px] font-semibold">
-                <button onclick="changeLanguage('th')" id="lang-th" class="px-2 py-1 rounded-lg text-amber-400 bg-slate-700 transition">🇹🇭 TH</button>
-                <button onclick="changeLanguage('mm')" id="lang-mm" class="px-2 py-1 rounded-lg text-slate-400 hover:text-white transition">🇲🇲 မြန်မာ</button>
-                <button onclick="changeLanguage('en')" id="lang-en" class="px-2 py-1 rounded-lg text-slate-400 hover:text-white transition">🇬🇧 EN</button>
-            </div>
-        </div>
-    </header>
-
-    <!-- MAIN CONTENT CONTAINER -->
-    <main class="flex-1 max-w-md mx-auto sm:max-w-2xl w-full px-4 py-6 space-y-6">
-
-        <!-- SEARCH SECTION -->
-        <section class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200/80 space-y-4">
-            <div class="text-center space-y-1">
-                <h2 class="text-base sm:text-lg font-bold text-slate-900" data-i18n="search_title">🔍 ตรวจสอบยอดค้างชำระค่างวด</h2>
-                <p class="text-xs text-slate-500" data-i18n="search_sub">กรอกเบอร์โทรศัพท์, เลขบัตรประชาชน หรือเลขทะเบียนรถเพื่อค้นหา</p>
-            </div>
-
-            <form onsubmit="handleSearch(event)" class="space-y-3">
-                <div class="relative">
-                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                    <input type="text" id="search-query" required placeholder="เบอร์โทร / เลขบัตรประชาชน / ทะเบียน..." class="w-full pl-11 pr-4 py-3 bg-slate-50 rounded-2xl border border-slate-300 focus:ring-2 focus:ring-amber-50
+    <header class="bg-navy-900 text-white shadow-lg sticky top-0
